@@ -6,6 +6,7 @@ import training from '../assets/training_body.svg';
 import Practice from '../assets/Practice.svg';
 import onlineTraining from '../assets/Online_training.svg';
 import books from '../assets/Books.svg';
+import training_body from '../assets/training_body.svg';
 
 const HeroSection = () => {
   return (
@@ -14,23 +15,27 @@ const HeroSection = () => {
         py: 8,
         px: 2,
         textAlign: 'center',
-        fontFamily: 'Be Vietnam Pro'
+        fontFamily: 'Be Vietnam Pro',
       }}
     >
       <Container>
-        <Typography
-          variant="h3"
-          component="h1"
-          sx={{ fontWeight: '600',
-            mb: 2,
-            backgroundColor: '#ffffff',
-            marginBottom: '50px',
-            padding: '20px',
-            borderRadius: '10px',
-        }}
-        >
-          <span><img src={Blits} style={{ marginRight: '15px', marginBottom: '-15px'}}></img></span><span style={{ color: '#7c4dff' }}>Unlock</span> Your Creative Potential
-        </Typography>
+          <Container sx={{display: 'flex', justifyContent: 'center'}}>
+            <Typography
+              variant="h3"
+              component="h1"
+              sx={{ fontWeight: '600',
+                mb: 2,
+                backgroundColor: '#ffffff',
+                marginBottom: '60px',
+                padding: '10px',
+                borderRadius: '10px',
+                width: '70%',
+                textAlign: 'center',
+            }}
+            >
+              <span><img src={Blits} style={{ marginRight: '15px', marginBottom: '-15px'}}></img></span><span style={{ color: '#7c4dff' }}>Unlock</span> Your Creative Potential
+            </Typography>
+          </Container>
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 4 }}>
           <Button variant="contained" sx={{ 
             backgroundColor: '#A38FFD',
@@ -39,6 +44,7 @@ const HeroSection = () => {
             minHeight: "40px",
             fontSize: "18px",
             fontWeight: "600",
+            borderRadius: "8px",
             }}>
             Explore Courses
           </Button>
@@ -50,10 +56,20 @@ const HeroSection = () => {
             fontWeight: "600",
             fontSize: "18px",
             boxShadow: 'none',
-
+            borderRadius: "8px",
             }}>View Pricing</Button>
         </Box>
-        <Grid container spacing={18} justifyContent="center">
+        <div style={{
+          backgroundImage: `url(${training_body})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: "cover",
+          width: '1100px',
+          height: '700px',
+          marginLeft: "15%"
+          }}>
+
+        </div>
+        <Grid container spacing={18} justifyContent="center" marginTop={"-350px"}>
           <Grid item xs={12} sm={4}>
             <Box
               sx={{

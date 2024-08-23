@@ -2,14 +2,8 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -18,11 +12,27 @@ const pages = ['Home', 'Courses', 'About Us', 'Pricing', 'Contact'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: '#F6F4FF', boxShadow: 'none', padding: '0 24px' }}>
-      <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+    <AppBar 
+      position="fixed" 
+      sx={{ 
+        backgroundColor: '#F6F4FF', 
+        boxShadow: 'none', 
+        width: "100%", 
+        padding: 0 
+      }}
+    >
+      <Toolbar 
+        disableGutters 
+        sx={{ 
+          width: '100%', 
+          padding: '0 16px', // Adjust padding if needed
+          boxSizing: 'border-box',
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {pages.map((page, index) => (
             <Button
               key={index}
@@ -32,7 +42,7 @@ function ResponsiveAppBar() {
               sx={{
                 textTransform: 'none',
                 color: '#000',
-                margin: '0 20px',
+                margin: '0 10px', // Adjust margin between buttons
                 fontSize: '18px',
                 fontWeight: '400',
                 minHeight: '55px',
@@ -57,15 +67,27 @@ function ResponsiveAppBar() {
               backgroundColor: '#fff',
               borderRadius: '8px',
               padding: '6px 12px',
-              marginRight: '24px',
+              marginRight: '16px', // Adjust margin between elements
             }}
           >
-            <SearchIcon sx={{ color: '#000', marginLeft: '25%' }} />
-            <InputBase className='inputField' placeholder="Search" sx={{ marginLeft: '8px', color: '#000' }} />
+            <SearchIcon sx={{ color: '#000' }} />
+            <InputBase 
+              className='inputField' 
+              placeholder="Search" 
+              sx={{ marginLeft: '8px', color: '#000', justifyContent: 'center' }} 
+            />
           </Box>
-          <Typography sx={{ fontWeight: 'bold', color: '#000', marginRight: '24px' }}>
+
+          <Typography 
+            sx={{ 
+              fontWeight: 'bold', 
+              color: '#000', 
+              marginRight: '16px' // Adjust margin
+            }}
+          >
             AR/EN
           </Typography>
+
           <Button
             sx={{
               textTransform: 'none',
@@ -78,6 +100,7 @@ function ResponsiveAppBar() {
           >
             Login
           </Button>
+
           <Button
             sx={{
               textTransform: 'none',
