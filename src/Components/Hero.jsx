@@ -1,8 +1,5 @@
-import React from 'react';
 import { Box, Button, Typography, Container, Grid } from '@mui/material';
-import { styled } from '@mui/system';
 import Blits from '../assets/Blitz.svg';
-import training from '../assets/training_body.svg';
 import Practice from '../assets/Practice.svg';
 import onlineTraining from '../assets/Online_training.svg';
 import books from '../assets/Books.svg';
@@ -16,6 +13,7 @@ const HeroSection = () => {
         px: 2,
         textAlign: 'center',
         fontFamily: 'Be Vietnam Pro',
+        marginTop: 25,
       }}
     >
       <Container>

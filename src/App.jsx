@@ -1,6 +1,7 @@
-import React from 'react'
 import NavBar from './Components/Nav-Bar'
 import HeroSection from './Components/Hero'
+import Coaches from './Components/Coaches'
+import Pricing from './Components/Pricing'
 import './App.css'
 
 function App() {
@@ -9,6 +10,8 @@ function App() {
     <>
       <NavBar />
       <HeroSection />
+      <Coaches />
+      <Pricing />
     </>
   )
 }
