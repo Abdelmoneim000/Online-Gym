@@ -1,8 +1,17 @@
 import { Typography, Container, Box, Grid, Card, CardContent, Button } from "@mui/material";
 import CheckIcon from '@mui/icons-material/Check';
 import Box_Unlocked from '../assets/Box_Unlocked.svg';
+import useOnScreen from "../Hooks/Observer";
+import { useRef, useState } from "react";
 
 export default function Pricing() {
+
+    const ref = useRef(null);
+    const isVisible = useOnScreen(ref);
+
+    const [card, setCard] = useState(null);
+
+    
     const plans = [
         { title: "Free Plan", price: <span style={{fontWeight: "900"}}>Free</span>, features: ["Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"] },
         { title: "Standard Plan", price: (<><span style={{fontWeight: "900"}}>$9</span><span> / month</span></>), features: ["Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"] },
@@ -10,7 +19,7 @@ export default function Pricing() {
     ];
 
     return (
-        <Container sx={{fontFamily: "Rubik"}}>
+        <Container ref={ref} sx={{fontFamily: "Rubik", animation: isVisible ? 'fadeIn 2s forwards' : '',}}>
                 <Typography variant="h3" gutterBottom sx={{fontWeight: "500", textAlign: "center"}}>
                     Choose Your Plan
                 </Typography>
@@ -21,18 +30,18 @@ export default function Pricing() {
             </Box>
             <Grid container spacing={1} justifyContent="center" marginTop={"5%"}>
                 {plans.map((plan, index) => (
-                    <Grid item xs={12} md={4} key={index} padding={10} >
+                    <Grid item xs={12} md={4} key={index} padding={10} sx={{borderWidth: "50px"}}>
                         <Card
+                        className="pricing-card"
+                            onMouseOver={() => {
+                                setCard(index);
+                                console.log(card);
+                            }}
                             sx={{
-                                borderColor: "#DDDDDD",
-                                borderWidth: 2,
+                                borderColor: card === index ? "#A38FFD" : "#DDDDDD",
                                 borderRadius: "10px",
                                 padding: "20px",
                                 width: "100%",
-                                ":hover": {
-                                    borderColor: "#A38FFD",
-                                    borderWidth: 10,
-                                },
                             }}
                         >
                             <CardContent sx={{display: "flex", justifyContent: "space-between", flexDirection: "column", height: "650px"}}>

@@ -4,16 +4,24 @@ import Practice from '../assets/Practice.svg';
 import onlineTraining from '../assets/Online_training.svg';
 import books from '../assets/Books.svg';
 import training_body from '../assets/training_body.svg';
+import { useRef } from 'react';
+import useOnScreen from '../Hooks/Observer.jsx';
 
 const HeroSection = () => {
+
+  const ref = useRef(null);
+  const isVisible = useOnScreen(ref);
+
   return (
     <Box
+      ref={ref}
       sx={{
         py: 8,
         px: 2,
         textAlign: 'center',
         fontFamily: 'Be Vietnam Pro',
         marginTop: 25,
+        animation: isVisible ? 'fadeIn 2s forwards' : '',
       }}
     >
       <Container>

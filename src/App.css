@@ -1,12 +1,10 @@
 body {
   background-color: #F6F4FF;
-  font-family: 'Be Vietnam Pro';
 }
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  width: 100%;
 }
 
 .logo {
@@ -43,4 +41,52 @@ body {
 
 .read-the-docs {
   color: #888;
+}
+
+.pricing-card:hover {
+  border-color: #A38FFD;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-1em);
+  }
+}
+
+@keyframes underlineHover {
+  from {
+    width: 0;
+    left: 50%;
+  }
+  to {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #A38FFD;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+  animation: underlineHover 0.3s forwards;
 }

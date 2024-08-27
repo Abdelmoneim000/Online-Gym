@@ -1,19 +1,17 @@
-import NavBar from './Components/Nav-Bar'
-import HeroSection from './Components/Hero'
-import Coaches from './Components/Coaches'
-import Pricing from './Components/Pricing'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SignUpPage from './pages/SignUp';
+import Landing from './pages/landing';
+import './App.css';
 
 function App() {
-
   return (
-    <>
-      <NavBar />
-      <HeroSection />
-      <Coaches />
-      <Pricing />
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/signup" element={<SignUpPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

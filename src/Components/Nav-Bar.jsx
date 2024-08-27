@@ -39,6 +39,7 @@ function ResponsiveAppBar() {
               onMouseOver={() => {
                 setAnchorElNav(index);
               }}
+              onClick={() => {index === 0 ? window.location.href = '/' : ''}}
               sx={{
                 textTransform: 'none',
                 color: '#000',
@@ -109,6 +110,7 @@ function ResponsiveAppBar() {
               borderRadius: '8px',
               padding: '6px 16px',
             }}
+            onClick={() => { window.location.href = '/signup'; }}
           >
             Sign Up
           </Button>
