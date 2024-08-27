@@ -90,6 +90,7 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Button
+            onClick={() => { window.location.href = '/login'; }}
             sx={{
               textTransform: 'none',
               color: '#fff',
