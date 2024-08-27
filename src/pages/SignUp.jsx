@@ -61,11 +61,15 @@ const SignUpPage = () => {
               sx={{ marginTop: 2, fontFamily: "Roboto" }}
             />
 
-            <Box display="flex" justifyContent="space-around" mt={4}>
-              <Button variant="contained" color="primary" sx={{ padding: '10px 20px', borderRadius: '8px', backgroundColor: "#A38FFD", color: "white", fontFamily: "Roboto" }}>
+            <Box display="flex" justifyContent="left" mt={4}>
+              <Button variant="contained" color="primary" sx={{ padding: '10px 20px', borderRadius: '8px', backgroundColor: "#A38FFD", color: "white", fontFamily: "Roboto", marginRight: "30px" }}>
                 Sign Up
               </Button>
-              <Button variant="outlined" color="primary" sx={{ padding: '10px 20px', borderRadius: '8px', borderColor: "#A38FFD", color: "#A38FFD", fontFamily: "Roboto"}}>
+              <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => { window.location.href = '/login'; }}
+              sx={{ padding: '10px 20px', borderRadius: '8px', borderColor: "#A38FFD", color: "#A38FFD", fontFamily: "Roboto"}}>
                 Log In
               </Button>
             </Box>
