@@ -21,7 +21,7 @@ const HeroSection = () => {
         textAlign: 'center',
         fontFamily: 'Be Vietnam Pro',
         marginTop: 25,
-        animation: isVisible ? 'fadeIn 2s forwards' : '',
+        animation: isVisible? 'fadeIn 2.5s forwards' : ''
       }}
     >
       <Container>

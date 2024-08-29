@@ -11,15 +11,23 @@ export default function Pricing() {
 
     const [card, setCard] = useState(null);
 
+    function handlePrice(number) {
+        if(localStorage.getItem("selectedPrice")) {
+            localStorage.removeItem("selectedPrice");
+        }
+        localStorage.setItem("selectedPrice", number);
+        window.location.href = "https://online-gym-wine.vercel.app//payments";
+    }
+
     
     const plans = [
-        { title: "Free Plan", price: <span style={{fontWeight: "900"}}>Free</span>, features: ["Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"] },
-        { title: "Standard Plan", price: (<><span style={{fontWeight: "900"}}>$9</span><span> / month</span></>), features: ["Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"] },
-        { title: "Premium Plan", price: (<><span style={{fontWeight: "900"}}>$12</span><span> / month</span></>), features: ["Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"], highlighted: true }
+        { title: "Free Plan", price: <span style={{fontWeight: "900"}}>Free</span>, features: ["Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"], selected: "Free" },
+        { title: "Standard Plan", price: (<><span style={{fontWeight: "900"}}>$9</span><span> / month</span></>), features: ["Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"], selected: "$9" },
+        { title: "Premium Plan", price: (<><span style={{fontWeight: "900"}}>$12</span><span> / month</span></>), features: ["Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"], highlighted: true, selected: "$12" },
     ];
 
     return (
-        <Container ref={ref} sx={{fontFamily: "Rubik", animation: isVisible ? 'fadeIn 2s forwards' : '',}}>
+        <Container ref={ref} sx={{fontFamily: "Rubik", animation: isVisible? 'fadeIn 2.5s forwards' : ''}}>
                 <Typography variant="h3" gutterBottom sx={{fontWeight: "500", textAlign: "center"}}>
                     Choose Your Plan
                 </Typography>
@@ -35,7 +43,6 @@ export default function Pricing() {
                         className="pricing-card"
                             onMouseOver={() => {
                                 setCard(index);
-                                console.log(card);
                             }}
                             sx={{
                                 borderColor: card === index ? "#A38FFD" : "#DDDDDD",
@@ -83,6 +90,7 @@ export default function Pricing() {
                                                 borderColor: "#A38FFD",
                                             },
                                         }}
+                                        onClick={() => handlePrice(plan.selected)}
                                     >
                                         Select
                                     </Button>

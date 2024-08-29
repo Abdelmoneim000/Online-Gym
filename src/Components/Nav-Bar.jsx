@@ -6,10 +6,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import PropTypes from 'prop-types';
 
 const pages = ['Home', 'Courses', 'About Us', 'Pricing', 'Contact'];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ onScrollToPricing, onScrollToFooter }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   return (
@@ -26,7 +27,7 @@ function ResponsiveAppBar() {
         disableGutters 
         sx={{ 
           width: '100%', 
-          padding: '0 16px', // Adjust padding if needed
+          padding: '0 16px',
           boxSizing: 'border-box',
           display: 'flex',
           justifyContent: 'center'
@@ -39,11 +40,19 @@ function ResponsiveAppBar() {
               onMouseOver={() => {
                 setAnchorElNav(index);
               }}
-              onClick={() => {index === 0 ? window.location.href = '/' : ''}}
+              onClick={() => {
+                if (page === 'Pricing') {
+                  onScrollToPricing();
+                } else if (page === 'Contact') {
+                  onScrollToFooter();
+                } else if (index === 0) {
+                  window.location.href = '/';
+                }
+              }}
               sx={{
                 textTransform: 'none',
                 color: '#000',
-                margin: '0 10px', // Adjust margin between buttons
+                margin: '0 10px',
                 fontSize: '18px',
                 fontWeight: '400',
                 minHeight: '55px',
@@ -58,7 +67,6 @@ function ResponsiveAppBar() {
             </Button>
           ))}
         </Box>
-
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Box
             sx={{
@@ -120,5 +128,10 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
+
+ResponsiveAppBar.propTypes = {
+  onScrollToPricing: PropTypes.func.isRequired,
+  onScrollToFooter: PropTypes.func.isRequired,
+};
 
 export default ResponsiveAppBar;

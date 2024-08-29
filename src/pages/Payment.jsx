@@ -197,8 +197,8 @@ import {
                 p: 4, 
                 borderRadius: 2 
               }}>
-                <Typography id="confirmation-modal-title" variant="h6" fontFamily={"Sofia Sans"} fontWeight={800} component="h2">
-                  Are you sure you want to confirm paying 14.55 $ ?
+                <Typography id="confirmation-modal-title" width={"300px"} textAlign={"center"} variant="h6" fontFamily={"Sofia Sans"} fontWeight={800} component="h2">
+                  Are you sure you want to confirm paying {localStorage.getItem('selectedPrice')}?
                 </Typography>
                 <Box display="flex" justifyContent="space-around" mt={4}>
                   <Button variant="outlined" sx={{border : "1px solid #A38FFD", color : "#A38FFD", width: "100px", height: "50px", fontSize: "18px"}}  onClick={handleCloseModal}>Cancel</Button>

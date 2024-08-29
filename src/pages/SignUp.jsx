@@ -57,7 +57,7 @@ const SignUpPage = () => {
             </Typography>
 
             <TextField
-              variant="outlined"
+              variant="standard"
               label="Email Address"
               fullWidth
               margin="normal"
@@ -67,7 +67,7 @@ const SignUpPage = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
-              variant="outlined"
+              variant="standard"
               label="User Name"
               fullWidth
               margin="normal"
@@ -76,7 +76,7 @@ const SignUpPage = () => {
               }}
             />
             <TextField
-              variant="outlined"
+              variant="standard"
               label="Password"
               type="password"
               fullWidth
@@ -133,7 +133,7 @@ const SignUpPage = () => {
           {/* Navigation Bar */}
           <AppBar position="static" elevation={0} sx={{ backgroundColor: 'transparent', boxShadow: 'none', paddingTop: 2 }}>
             <Toolbar sx={{ justifyContent: 'center', gap: 4 }}>
-              <Link href="http://localhost:5173/" className='nav-link' underline="none" sx={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
+              <Link href="/" className='nav-link' underline="none" sx={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
                 Home
               </Link>
               <Link href="#" className='nav-link' underline="none" sx={{ color: 'black', fontSize: '18px' }}>

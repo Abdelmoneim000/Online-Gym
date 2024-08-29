@@ -27,7 +27,7 @@ import {
               </Typography>
   
               <TextField
-                variant="outlined"
+                variant="standard"
                 label="Email Address"
                 fullWidth
                 margin="normal"
@@ -36,16 +36,7 @@ import {
                 }}
               />
               <TextField
-                variant="outlined"
-                label="User Name"
-                fullWidth
-                margin="normal"
-                InputProps={{
-                  sx: { borderRadius: '8px', fontFamily: "Roboto" },
-                }}
-              />
-              <TextField
-                variant="outlined"
+                variant="standard"
                 label="Password"
                 type="password"
                 fullWidth
@@ -80,8 +71,8 @@ import {
                 </Button>
               </Box>
   
-              <Typography variant="body2" sx={{ color: '#555', textAlign: 'center', marginTop: 4, fontFamily: "Roboto" }}>
-                Or login with
+              <Typography variant="body1" sx={{ color: '#555', textAlign: 'center', marginTop: 4, fontFamily: "Roboto" }}>
+                login with
               </Typography>
   
               <Box display="flex" justifyContent="center" mt={2}>
@@ -99,7 +90,7 @@ import {
             {/* Navigation Bar */}
             <AppBar position="static" elevation={0} sx={{marginBottom: "50px", backgroundColor: 'transparent', boxShadow: 'none', paddingTop: 2 }}>
               <Toolbar sx={{ justifyContent: 'center', gap: 4 }}>
-                <Link href="http://localhost:5173/" className='nav-link' underline="none" sx={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
+                <Link href="/" className='nav-link' underline="none" sx={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
                   Home
                 </Link>
                 <Link href="#" className='nav-link' underline="none" sx={{ color: 'black', fontSize: '18px' }}>

@@ -23,7 +23,7 @@ export default function Footer() {
             py: 4,
             fontFamily: 'DM Sans',
             width: '100%',
-            animation: isVisible? 'fadeIn 2s forwards' : '',
+            animation: isVisible? 'fadeIn 2.5s forwards' : ''
             }}>
             <Container style={{fontFamily: 'DM Sans', width: "100%"}} sx={{fontFamily: 'DM Sans', width: "100%"}}>
                 <Grid container spacing={4}>
