@@ -99,7 +99,7 @@ import {
             {/* Navigation Bar */}
             <AppBar position="static" elevation={0} sx={{marginBottom: "50px", backgroundColor: 'transparent', boxShadow: 'none', paddingTop: 2 }}>
               <Toolbar sx={{ justifyContent: 'center', gap: 4 }}>
-                <Link href="#" className='nav-link' underline="none" sx={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
+                <Link href="http://localhost:5173/" className='nav-link' underline="none" sx={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
                   Home
                 </Link>
                 <Link href="#" className='nav-link' underline="none" sx={{ color: 'black', fontSize: '18px' }}>

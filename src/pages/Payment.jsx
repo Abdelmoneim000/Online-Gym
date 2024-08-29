@@ -9,6 +9,7 @@ import {
     TextField,
     Button,
     IconButton,
+    Modal,
   } from '@mui/material';
   import CreditCardIcon from '../assets/credit-card.svg';
   import PayPalIcon from '../assets/paypal.svg';
@@ -20,9 +21,18 @@ import {
   const Payment = () => {
     const [paymentMethod, setPaymentMethod] = useState('card');
     const [paymentStatus, setPaymentStatus] = useState('Billing');
+    const [openModal, setOpenModal] = useState(false);
   
     const handlePaymentMethodChange = (event) => {
       setPaymentMethod(event.target.value);
+    };
+  
+    const handleConfirmPayment = () => {
+      setOpenModal(true);
+    };
+  
+    const handleCloseModal = () => {
+      setOpenModal(false);
     };
   
     return (
@@ -39,18 +49,18 @@ import {
             }}
           />
         </Box>
-    
+  
         <Grid container spacing={2} sx={{ height: '100vh', alignItems: 'center', justifyContent: 'center', backgroundColor: "white" }}>
           <Grid item xs={12} md={5} fontFamily={"Sofia Sans"}>
             {/* Progress Bar */}
             <Grid container justifyContent="left" sx={{ mb: 8 }}>
-                <Grid item xs={10} md={5}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Typography variant="body1" fontWeight={600} fontFamily={"Sofia Sans"} color={paymentStatus === "Billing" ? "#A38FFD" : "#D3D3D3"} sx={{ mr: 1 }}>Billing</Typography>
-                    <Box sx={{ flexGrow: 1, height: '1px', backgroundColor: '#D3D3D3' }} />
-                        <Typography variant="body1" fontWeight={400} fontFamily={"Sofia Sans"} color={paymentStatus === "Billing" ? "#D3D3D3" : "#A38FFD"} sx={{ ml: 1 }}>Confirmation</Typography>
-                    </Box>
-                </Grid>
+              <Grid item xs={10} md={5}>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Typography variant="body1" fontWeight={600} fontFamily={"Sofia Sans"} color={paymentStatus === "Billing" ? "#A38FFD" : "#D3D3D3"} sx={{ mr: 1 }}>Billing</Typography>
+                  <Box sx={{ flexGrow: 1, height: '1px', backgroundColor: '#D3D3D3' }} />
+                  <Typography variant="body1" fontWeight={400} fontFamily={"Sofia Sans"} color={paymentStatus === "Billing" ? "#D3D3D3" : "#A38FFD"} sx={{ ml: 1 }}>Confirmation</Typography>
+                </Box>
+              </Grid>
             </Grid>
             <FormControl component="fieldset" fullWidth>
               <Typography variant="h6" fontFamily={"Sofia Sans"} textAlign={"left"} fontWeight={700} gutterBottom>
@@ -69,7 +79,7 @@ import {
                   control={<Radio />}
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <img src={CreditCardIcon} alt="Credit Card" style={{marginRight: "10px"}} />
+                      <img src={CreditCardIcon} alt="Credit Card" style={{ marginRight: "10px" }} />
                     </Box>
                   }
                 />
@@ -99,10 +109,10 @@ import {
                       <Typography fontFamily={"Sofia Sans"} variant='subtitle1' fontWeight={500}>E-Wallet</Typography>
                     </Box>
                   }
-                  />
+                />
               </RadioGroup>
   
-              <Box mt={8} >
+              <Box mt={8}>
                 <Typography variant="h6" textAlign={"left"} fontFamily={"Sofia Sans"} gutterBottom>
                   Payment Details
                 </Typography>
@@ -122,7 +132,7 @@ import {
                   InputProps={{
                     endAdornment: (
                       <IconButton>
-                          <img src={CreditCardIcon} alt="Creding Card" style={{marginRight: "10px"}} />
+                        <img src={CreditCardIcon} alt="Credit Card" style={{ marginRight: "10px" }} />
                       </IconButton>
                     ),
                   }}
@@ -148,32 +158,62 @@ import {
                   </Grid>
                 </Grid>
               </Box>
-              <Typography 
-              fontFamily={"Sofia Sans"}
-              mt={8}
-              fontWeight={700}
-              textAlign={"left"}
-              width={"400px"}
-              fontSize={"18px"}
-              color={"#A9A9A9"}
+              <Typography
+                fontFamily={"Sofia Sans"}
+                mt={8}
+                fontWeight={700}
+                textAlign={"left"}
+                width={"400px"}
+                fontSize={"18px"}
+                color={"#A9A9A9"}
               >
                 By clicking &quot;Confirm payment&quot; I agree to the company&apos;s terms of service.
               </Typography>
   
               <Box mt={4} display="flex" justifyContent="left">
-                <Button variant="outlined" color="primary" fontFamily={"Sofia Sans"} sx={{marginRight: "50px", borderColor: "#A38FFD", color: "#A38FFD", width: "150px", height: "50px", border: "2px solid #A38FFD", borderRadius: "8px"}}>
+                <Button variant="outlined" color="primary" fontFamily={"Sofia Sans"} sx={{ marginRight: "50px", borderColor: "#A38FFD", color: "#A38FFD", width: "150px", height: "50px", border: "2px solid #A38FFD", borderRadius: "8px" }}>
                   Back
                 </Button>
-                <Button variant="contained" autoCapitalize='false' color="primary" sx={{backgroundColor: "#A38FFD", padding: "15px", borderRadius: "8px", width: "170px", height: "50px"}} fontFamily={"Sofia Sans"}>
+                <Button variant="contained" color="primary" sx={{ backgroundColor: "#A38FFD", padding: "15px", borderRadius: "8px", width: "170px", height: "50px" }} fontFamily={"Sofia Sans"} onClick={handleConfirmPayment}>
                   Confirm Payment
                 </Button>
               </Box>
             </FormControl>
+  
+            {/* Confirmation Modal */}
+            <Modal
+              open={openModal}
+              onClose={handleCloseModal}
+              aria-labelledby="confirmation-modal-title"
+              aria-describedby="confirmation-modal-description"
+            >
+              <Box sx={{ 
+                position: 'absolute', 
+                top: '50%', 
+                left: '50%', 
+                transform: 'translate(-50%, -50%)', 
+                bgcolor: 'background.paper', 
+                boxShadow: 24, 
+                p: 4, 
+                borderRadius: 2 
+              }}>
+                <Typography id="confirmation-modal-title" variant="h6" fontFamily={"Sofia Sans"} fontWeight={800} component="h2">
+                  Are you sure you want to confirm paying 14.55 $ ?
+                </Typography>
+                <Box display="flex" justifyContent="space-around" mt={4}>
+                  <Button variant="outlined" sx={{border : "1px solid #A38FFD", color : "#A38FFD", width: "100px", height: "50px", fontSize: "18px"}}  onClick={handleCloseModal}>Cancel</Button>
+                  <Button variant="contained" sx={{backgroundColor : "#A38FFD", width: "100px", height: "50px", fontSize: "18px"}} onClick={() => {
+                    handleCloseModal();
+                    setPaymentStatus("Confirmation");
+                    }}>OK</Button>
+                </Box>
+              </Box>
+            </Modal>
           </Grid>
   
           <Grid item xs={12} md={4}>
             <Box sx={{ display: 'flex', justifyContent: 'left' }}>
-              <img src={TrainingPayment} alt="Training Payment" style={{width: "400px", height: "400px"}} />
+              <img src={TrainingPayment} alt="Training Payment" style={{ width: "400px", height: "400px" }} />
             </Box>
           </Grid>
         </Grid>
@@ -182,4 +222,3 @@ import {
   };
   
   export default Payment;
-  
