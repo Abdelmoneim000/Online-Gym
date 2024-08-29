@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Container,
   Grid,
@@ -9,11 +8,43 @@ import {
   Checkbox,
   FormControlLabel,
   AppBar,
-  Toolbar
+  Toolbar,
+  Box
 } from '@mui/material';
+import axios from 'axios';
+
 import training_signup from '../assets/training_signup.svg';
+import { useState } from 'react';
 
 const SignUpPage = () => {
+
+  const [email, setEmail] = useState('');
+
+
+  const handleSignUp = async () => {
+    try {
+      // Make API request to send the verification code
+      const response = await axios.patch(
+        `https://testgymproject.runasp.net/Users/${email}`,
+        null,
+        {
+          headers: {
+            'API-Key': 'LnwOI0lbkv5iYlSL'
+          }
+        }
+      );
+      
+      if (response.status === 200) {
+        console.log('Verification code sent successfully.');
+      } else {
+        console.log('Failed to send verification code. Email might already exist or is not valid.');
+      }
+    } catch (error) {
+      // Log the error message
+      console.error('Error occurred while sending verification code:', error.response?.data || error.message);
+    }
+  };
+
   return (
     <Container maxWidth={false} sx={{ width: '100%', padding: 0 }} style={{fontFamily: "Open Sans", fontWeight: 700}}>
       <Grid container sx={{ height: '100vh', width: '100%' }}>
@@ -34,6 +65,7 @@ const SignUpPage = () => {
               InputProps={{
                 sx: { borderRadius: '8px', fontFamily: "Roboto" },
               }}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -62,7 +94,16 @@ const SignUpPage = () => {
             />
 
             <Box display="flex" justifyContent="left" mt={4}>
-              <Button variant="contained" color="primary" sx={{ padding: '10px 20px', borderRadius: '8px', backgroundColor: "#A38FFD", color: "white", fontFamily: "Roboto", marginRight: "30px" }}>
+              <Button variant="contained" color="primary" sx={{
+                padding: '10px 20px',
+                borderRadius: '8px',
+                backgroundColor: "#A38FFD",
+                color: "white",
+                fontFamily: "Roboto",
+                marginRight: "30px"
+                }}
+                onClick={handleSignUp}
+                >
                 Sign Up
               </Button>
               <Button
