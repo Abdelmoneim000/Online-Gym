@@ -23,27 +23,26 @@ const SignUpPage = () => {
 
   const handleSignUp = async () => {
     try {
-      // Make API request to send the verification code
-      const response = await axios.patch(
-        `https://testgymproject.runasp.net/Users/${email}`,
-        null,
-        {
-          headers: {
-            'API-Key': 'LnwOI0lbkv5iYlSL'
-          }
+      const response = await fetch(`http://testgymproject.runasp.net/Users/${email}`, {
+        method: 'PATCH',
+        headers: {
+          'API-Key': 'LnwOI0lbkv5iYlSL',
+          'Content-Type': 'application/json'
         }
-      );
-      
-      if (response.status === 200) {
+      });
+  
+      // Check if the response is successful
+      if (response.ok) {
         console.log('Verification code sent successfully.');
       } else {
         console.log('Failed to send verification code. Email might already exist or is not valid.');
       }
     } catch (error) {
       // Log the error message
-      console.error('Error occurred while sending verification code:', error.response?.data || error.message);
+      console.error('Error occurred while sending verification code:', error.message);
     }
   };
+  
 
   return (
     <Container maxWidth={false} sx={{ width: '100%', padding: 0 }} style={{fontFamily: "Open Sans", fontWeight: 700}}>
