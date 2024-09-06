@@ -50,6 +50,7 @@ const HeroSection = () => {
                   borderRadius: '10px',
                   width: '70%',
                   textAlign: 'center',
+                  color: 'black',
               }}
               >
                 <span><img src={Blitz} style={{ marginRight: '15px', marginBottom: '-15px'}}></img></span><span style={{ color: '#528421' }}>Unlock</span> Your Creative Potential
