@@ -11,9 +11,8 @@ import {
   Toolbar,
   Box
 } from '@mui/material';
-import axios from 'axios';
 
-import training_signup from '../assets/training_signup.svg';
+import training_signup from '../assets/training_signup.png';
 import { useState } from 'react';
 
 const SignUpPage = () => {
@@ -45,104 +44,143 @@ const SignUpPage = () => {
   
 
   return (
-    <Container maxWidth={false} sx={{ width: '100%', padding: 0 }} style={{fontFamily: "Open Sans", fontWeight: 700}}>
+    <Container maxWidth={false} sx={{
+      width: '100%',
+      background: 'linear-gradient(180deg, #000000 0%, #1E1E1E 51%, #1E1E1E 100%)',
+      padding: 0
+      }} style={{fontFamily: "Open Sans", fontWeight: 700, overflow: "hidden"}}>
       <Grid container sx={{ height: '100vh', width: '100%' }}>
-        <Grid item xs={12} sm={6} sx={{ backgroundColor: 'white', padding: '40px' }}>
+        <Grid item xs={12} sm={6} sx={{ padding: '40px' }}>
           <Box display="flex" flexDirection="column" justifyContent="center" height="100%">
-            <Typography variant="h3" sx={{ color: '#9173FF', fontWeight: 'bold', marginBottom: 2, fontFamily: "Roboto" }}>
+            <Typography variant="h3" sx={{ color: 'white', fontWeight: 'bold', marginBottom: 2, fontFamily: "Roboto", textAlign: "left" }}>
               Unlock Your Potential. Start Your Journey Today.
             </Typography>
-            <Typography variant="body1" sx={{ color: '#555', marginBottom: 4, fontFamily: "Roboto" }}>
+            <Typography variant="body1" sx={{ color: '#85E22B', marginBottom: 4, mt: 2, fontFamily: "Roboto", textAlign: "left" }}>
               Welcome! Please sign up to create your account.
             </Typography>
 
             <TextField
-              variant="standard"
+              variant="outlined"
               label="Email Address"
               fullWidth
               margin="normal"
-              InputProps={{
-                sx: { borderRadius: '8px', fontFamily: "Roboto" },
-              }}
               onChange={(e) => setEmail(e.target.value)}
+              InputProps={{
+                sx: { borderRadius: '8px', fontFamily: "Roboto", backgroundColor: '#FFFFFF' },
+              }}
             />
             <TextField
-              variant="standard"
+              variant="outlined"
               label="User Name"
               fullWidth
               margin="normal"
               InputProps={{
-                sx: { borderRadius: '8px', fontFamily: "Roboto" },
+                sx: { borderRadius: '8px', fontFamily: "Roboto", backgroundColor: '#FFFFFF', },
               }}
             />
             <TextField
-              variant="standard"
+              variant="outlined"
               label="Password"
               type="password"
               fullWidth
               margin="normal"
               InputProps={{
-                sx: { borderRadius: '8px', fontFamily: "Roboto" },
+                sx: { borderRadius: '8px', fontFamily: "Roboto", backgroundColor: '#FFFFFF', },
               }}
             />
 
+          {/* Checkbox and Forgot Password link */}
+          <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
             <FormControlLabel
-              control={<Checkbox color="primary" />}
+              control={<Checkbox color="primary" sx={{
+                color: 'white',
+                '&.Mui-checked': {
+                  color: '#85E22B',
+                }
+              }}/>}
               label="Remember Me"
-              sx={{ marginTop: 2, fontFamily: "Roboto" }}
+              sx={{ fontFamily: 'Roboto', color: 'white', opacity: 0.6 }}
             />
+            <Link href="#" variant="body2" color="primary" sx={{ fontFamily: 'Roboto', textDecoration: 'none', cursor: 'pointer', color: "white", opacity: 0.6 }}>
+              Forgot Password?
+            </Link>
+          </Box>
 
             <Box display="flex" justifyContent="left" mt={4}>
-              <Button variant="contained" color="primary" sx={{
+              <Button 
+              variant="outlined" 
+              color="primary"
+              onClick={() => {
+                handleSignUp();
+                window.location.href = '/login';
+              }} 
+              sx={{
                 padding: '10px 20px',
                 borderRadius: '8px',
-                backgroundColor: "#A38FFD",
-                color: "white",
+                color: "black",
+                backgroundColor: "white",
                 fontFamily: "Roboto",
-                marginRight: "30px"
-                }}
-                onClick={handleSignUp}
-                >
+                marginRight: "30px",
+                '&:hover': {
+                  backgroundColor: '#85E22B',
+                  color: "white",
+                }
+              }}>
                 Sign Up
               </Button>
-              <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => { window.location.href = '/login'; }}
-              sx={{ padding: '10px 20px', borderRadius: '8px', borderColor: "#A38FFD", color: "#A38FFD", fontFamily: "Roboto"}}>
-                Log In
+              <Button variant="contained" color="primary"
+                onClick={() => window.location.href = '/login'}
+                sx={{
+                  padding: '10px 20px',
+                  borderRadius: '8px',
+                  color: "black",
+                  backgroundColor: "white",
+                  fontFamily: "Roboto",
+                  marginRight: "30px",
+                  '&:hover': {
+                    backgroundColor: '#85E22B',
+                    color: "white",
+                  }
+                }}>
+                  Log In
               </Button>
             </Box>
 
-            <Typography variant="body2" sx={{ color: '#555', textAlign: 'center', marginTop: 4, fontFamily: "Roboto" }}>
-              Or login with
+            <Typography variant="body1" sx={{ color: 'white', textAlign: 'center', marginTop: 4, fontFamily: "Roboto", opacity: 0.6 }}>
+              login with
             </Typography>
 
             <Box display="flex" justifyContent="center" mt={2}>
-              <Link href="#" variant="body2" color="primary" sx={{ margin: '0 16px', color: "#A38FFD", textDecoration: "none", fontFamily: "Roboto" }}>
+              <Link href="#" variant="body2" color="primary" sx={{ margin: '0 16px', color: "#85E22B", textDecoration: "none", fontFamily: "Roboto" }}>
                 Facebook
               </Link>
-              <Link href="#" variant="body2" color="primary" sx={{ margin: '0 16px', color: "#A38FFD", textDecoration: "none", fontFamily: "Roboto" }}>
+              <Link href="#" variant="body2" color="primary" sx={{ margin: '0 16px', color: "#85E22B", textDecoration: "none", fontFamily: "Roboto" }}>
                 Google
               </Link>
             </Box>
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={6} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'column', backgroundColor: '#FAFAFA', fontFamily: 'Roboto' }}>
+        <Grid item xs={12} sm={6} sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexDirection: 'column',
+          fontFamily: 'Roboto',
+        }}>
           {/* Navigation Bar */}
-          <AppBar position="static" elevation={0} sx={{ backgroundColor: 'transparent', boxShadow: 'none', paddingTop: 2 }}>
+          <AppBar position="static" elevation={0} sx={{marginBottom: "50px", backgroundColor: 'transparent', boxShadow: 'none', paddingTop: 2 }}>
             <Toolbar sx={{ justifyContent: 'center', gap: 4 }}>
-              <Link href="/" className='nav-link' underline="none" sx={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
+              <Link href="/" className='nav-link' underline="none" sx={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>
                 Home
               </Link>
-              <Link href="#" className='nav-link' underline="none" sx={{ color: 'black', fontSize: '18px' }}>
+              <Link href="#" className='nav-link' underline="none" sx={{ color: 'white', fontSize: '18px' }}>
                 About Us
               </Link>
-              <Link href="#" className='nav-link' underline="none" sx={{ color: 'black', fontSize: '18px' }}>
+              <Link href="#" className='nav-link' underline="none" sx={{ color: 'white', fontSize: '18px' }}>
                 Pricing
               </Link>
-              <Link href="#" className='nav-link' underline="none" sx={{ color: 'black', fontSize: '18px' }}>
+              <Link href="#" className='nav-link' underline="none" sx={{ color: 'white', fontSize: '18px' }}>
                 Contact
               </Link>
             </Toolbar>
@@ -152,7 +190,7 @@ const SignUpPage = () => {
           <img
             src={training_signup}
             alt="Fitness Illustration"
-            style={{ width: '65rem', maxHeight: '100vh', objectFit: 'contain', marginLeft: '-250px' }}
+            style={{ width: '1100px', marginTop: '-150px', marginLeft: '-200px' }}
           />
         </Grid>
       </Grid>

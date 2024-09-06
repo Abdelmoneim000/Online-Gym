@@ -9,9 +9,14 @@ export default function Coaches() {
 
 
     return (
-        <Container maxWidth="md" ref={ref} sx={{ fontFamily: "Be Vietnam Pro", marginTop: "5%", height: "80vh", animation: isVisible? 'fadeIn 2.5s forwards' : ''  }}>
-            <Typography variant="h3" component="h1" sx={{ 
-                color: "#262626",
+        <Container maxWidth={false} ref={ref} sx={{ 
+            fontFamily: "Be Vietnam Pro",
+            marginTop: "10%",
+            height: "90vh",
+            animation: isVisible? 'fadeIn 2.5s forwards' : '',
+            background: 'linear-gradient(180deg, #000000 0%, #1E1E1E 51%, #1E1E1E 100%)',
+            }}>
+            <Typography variant="h3" component="h1" color={"white"} sx={{
                 fontWeight: "600",
                 textAlign: "center",
                 py: 4

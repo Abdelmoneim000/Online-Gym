@@ -15,9 +15,8 @@ import {
   import PayPalIcon from '../assets/paypal.svg';
   import WalletIcon from '../assets/stc_pay.svg';
   import { useState } from 'react';
-  import TrainingPayment from '../assets/Training_payment.svg';
-  import CloudPayment from '../assets/Cloud_payment.svg';
-  
+  import TrainingPayment from '../assets/Training_payment.png';
+
   const Payment = () => {
     const [paymentMethod, setPaymentMethod] = useState('card');
     const [paymentStatus, setPaymentStatus] = useState('Billing');
@@ -37,33 +36,31 @@ import {
   
     return (
       <>
-        <Box sx={{ position: 'absolute', top: 0, right: 0, p: 2 }}>
-          <img
-            src={CloudPayment}
-            alt="Cloud Payment"
-            style={{
-              width: '600px',
-              height: '600px',
-              marginTop: '-100px',
-              marginRight: '-15px',
-            }}
-          />
-        </Box>
-  
-        <Grid container spacing={2} sx={{ height: '100vh', alignItems: 'center', justifyContent: 'center', backgroundColor: "white" }}>
+        <Grid container spacing={2} sx={{
+          height: '102vh',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'linear-gradient(180deg, #000000 0%, #1E1E1E 51%, #1E1E1E 100%)',
+          overflow: 'hidden'
+          }}>
           <Grid item xs={12} md={5} fontFamily={"Sofia Sans"}>
             {/* Progress Bar */}
             <Grid container justifyContent="left" sx={{ mb: 8 }}>
               <Grid item xs={10} md={5}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Typography variant="body1" fontWeight={600} fontFamily={"Sofia Sans"} color={paymentStatus === "Billing" ? "#A38FFD" : "#D3D3D3"} sx={{ mr: 1 }}>Billing</Typography>
+                  <Typography variant="body1" fontWeight={600} fontFamily={"Sofia Sans"} color={paymentStatus === "Billing" ? "#85E22B" : "#D3D3D3"} sx={{ mr: 1 }}>Billing</Typography>
                   <Box sx={{ flexGrow: 1, height: '1px', backgroundColor: '#D3D3D3' }} />
-                  <Typography variant="body1" fontWeight={400} fontFamily={"Sofia Sans"} color={paymentStatus === "Billing" ? "#D3D3D3" : "#A38FFD"} sx={{ ml: 1 }}>Confirmation</Typography>
+                  <Typography variant="body1" fontWeight={400} fontFamily={"Sofia Sans"} color={paymentStatus === "Billing" ? "#D3D3D3" : "#85E22B"} sx={{ ml: 1 }}>Confirmation</Typography>
                 </Box>
               </Grid>
             </Grid>
             <FormControl component="fieldset" fullWidth>
-              <Typography variant="h6" fontFamily={"Sofia Sans"} textAlign={"left"} fontWeight={700} gutterBottom>
+              <Typography variant="h6" color={"white"} fontFamily={"Sofia Sans"} textAlign={"left"} fontWeight={700} gutterBottom
+                sx={{ 
+                  color: "white",
+                  opacity: 0.8
+                }}
+              >
                 Payment Method
               </Typography>
               <RadioGroup
@@ -76,7 +73,7 @@ import {
               >
                 <FormControlLabel
                   value="card"
-                  control={<Radio />}
+                  control={<Radio sx={{color: "white", '&.Mui-checked' : {color: "#85E22B"}}}/>}
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <img src={CreditCardIcon} alt="Credit Card" style={{ marginRight: "10px" }} />
@@ -85,7 +82,7 @@ import {
                 />
                 <FormControlLabel
                   value="paypal"
-                  control={<Radio />}
+                  control={<Radio sx={{color: "white", '&.Mui-checked' : {color: "#85E22B"}}}/>}
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <img src={PayPalIcon} style={{ marginRight: "10px" }} />
@@ -94,7 +91,7 @@ import {
                 />
                 <FormControlLabel
                   value="stcPay"
-                  control={<Radio />}
+                  control={<Radio sx={{color: "white", '&.Mui-checked' : {color: "#85E22B"}}}/>}
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <img src={WalletIcon} style={{ marginLeft: "-25px" }} />
@@ -103,7 +100,7 @@ import {
                 />
                 <FormControlLabel
                   value="ewallet"
-                  control={<Radio />}
+                  control={<Radio sx={{color: "white", '&.Mui-checked' : {color: "#85E22B"}}}/>}
                   label={
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <Typography fontFamily={"Sofia Sans"} variant='subtitle1' fontWeight={500}>E-Wallet</Typography>
@@ -113,7 +110,12 @@ import {
               </RadioGroup>
   
               <Box mt={8}>
-                <Typography variant="h6" textAlign={"left"} fontFamily={"Sofia Sans"} gutterBottom>
+                <Typography variant="h6" textAlign={"left"} fontFamily={"Sofia Sans"} gutterBottom
+                sx={{
+                  color: "white",
+                  opacity: 0.8
+                }}
+                >
                   Payment Details
                 </Typography>
                 <TextField
@@ -121,6 +123,18 @@ import {
                   variant="standard"
                   label="Enter Name on Card"
                   margin="normal"
+                  color='primary'
+                  sx={{
+                    '& label': { color: 'white' },
+                    '& label.Mui-focused': { color: '#85E22B' },
+                    '& .MuiInput-underline:after': { borderBottomColor: '#85E22B' },
+                    '& .MuiInput-underline:before': { borderBottomColor: 'white' },
+                    '& .MuiInput-underline:hover:not(.Mui-disabled):before': { borderBottomColor: 'white' },
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputBase-input:after': { color: '#85E22B' },
+                    '& .MuiInputBase-input:before': { color: 'white' },
+                    '& .MuiInputBase-input:hover:not(.Mui-disabled):before': { color: 'white' },
+                  }}
                   fontFamily={"Sofia Sans"}
                 />
                 <TextField
@@ -128,6 +142,17 @@ import {
                   variant="standard"
                   label="Card Number"
                   margin="normal"
+                  sx={{
+                    '& label': { color: 'white' },
+                    '& label.Mui-focused': { color: '#85E22B' },
+                    '& .MuiInput-underline:after': { borderBottomColor: '#85E22B' },
+                    '& .MuiInput-underline:before': { borderBottomColor: 'white' },
+                    '& .MuiInput-underline:hover:not(.Mui-disabled):before': { borderBottomColor: 'white' },
+                    '& .MuiInputBase-input': { color: 'white' },
+                    '& .MuiInputBase-input:after': { color: '#85E22B' },
+                    '& .MuiInputBase-input:before': { color: 'white' },
+                    '& .MuiInputBase-input:hover:not(.Mui-disabled):before': { color: 'white' },
+                  }}
                   fontFamily={"Sofia Sans"}
                   InputProps={{
                     endAdornment: (
@@ -144,6 +169,17 @@ import {
                       variant="standard"
                       label="Expiration"
                       margin="normal"
+                      sx={{
+                        '& label': { color: 'white' },
+                        '& label.Mui-focused': { color: '#85E22B' },
+                        '& .MuiInput-underline:after': { borderBottomColor: '#85E22B' },
+                        '& .MuiInput-underline:before': { borderBottomColor: 'white' },
+                        '& .MuiInput-underline:hover:not(.Mui-disabled):before': { borderBottomColor: 'white' },
+                        '& .MuiInputBase-input': { color: 'white' },
+                        '& .MuiInputBase-input:after': { color: '#85E22B' },
+                        '& .MuiInputBase-input:before': { color: 'white' },
+                        '& .MuiInputBase-input:hover:not(.Mui-disabled):before': { color: 'white' },
+                      }}
                       fontFamily={"Sofia Sans"}
                     />
                   </Grid>
@@ -153,6 +189,17 @@ import {
                       variant="standard"
                       label="CVV Code"
                       margin="normal"
+                      sx={{
+                        '& label': { color: 'white' },
+                        '& label.Mui-focused': { color: '#85E22B' },
+                        '& .MuiInput-underline:after': { borderBottomColor: '#85E22B' },
+                        '& .MuiInput-underline:before': { borderBottomColor: 'white' },
+                        '& .MuiInput-underline:hover:not(.Mui-disabled):before': { borderBottomColor: 'white' },
+                        '& .MuiInputBase-input': { color: 'white' },
+                        '& .MuiInputBase-input:after': { color: '#85E22B' },
+                        '& .MuiInputBase-input:before': { color: 'white' },
+                        '& .MuiInputBase-input:hover:not(.Mui-disabled):before': { color: 'white' },
+                      }}
                       fontFamily={"Sofia Sans"}
                     />
                   </Grid>
@@ -171,10 +218,41 @@ import {
               </Typography>
   
               <Box mt={4} display="flex" justifyContent="left">
-                <Button variant="outlined" color="primary" fontFamily={"Sofia Sans"} sx={{ marginRight: "50px", borderColor: "#A38FFD", color: "#A38FFD", width: "150px", height: "50px", border: "2px solid #A38FFD", borderRadius: "8px" }}>
+                <Button variant="outlined" color="primary" fontFamily={"Sofia Sans"}
+                sx={{
+                  backgroundColor: "transparent",
+                  borderColor: "#85E22B",
+                  color: "#85E22B",
+                  padding: "15px",
+                  borderRadius: "8px",
+                  marginRight: "45px",
+                  width: "170px",
+                  height: "50px",
+                  '&:hover': {
+                    backgroundColor: "#85E22B",
+                    color: "white",
+                    borderColor: "#85E22B",
+                  }
+                }}
+                >
                   Back
                 </Button>
-                <Button variant="contained" color="primary" sx={{ backgroundColor: "#A38FFD", padding: "15px", borderRadius: "8px", width: "170px", height: "50px" }} fontFamily={"Sofia Sans"} onClick={handleConfirmPayment}>
+                <Button variant="outlined" color="primary"
+                sx={{
+                  backgroundColor: "transparent",
+                  borderColor: "#85E22B",
+                  color: "#85E22B",
+                  padding: "15px",
+                  borderRadius: "8px",
+                  width: "170px",
+                  height: "50px",
+                  '&:hover': {
+                    backgroundColor: "#85E22B",
+                    color: "white",
+                    borderColor: "#85E22B",
+                  }
+                  }}
+                  fontFamily={"Sofia Sans"} onClick={handleConfirmPayment}>
                   Confirm Payment
                 </Button>
               </Box>
@@ -197,12 +275,38 @@ import {
                 p: 4, 
                 borderRadius: 2 
               }}>
-                <Typography id="confirmation-modal-title" width={"300px"} textAlign={"center"} variant="h6" fontFamily={"Sofia Sans"} fontWeight={800} component="h2">
+                <Typography id="confirmation-modal-title" width={"300px"} textAlign={"center"} variant="h6" fontFamily={"Sofia Sans"} fontWeight={800} component="h2" color={"black"}>
                   Are you sure you want to confirm paying {localStorage.getItem('selectedPrice')}?
                 </Typography>
                 <Box display="flex" justifyContent="space-around" mt={4}>
-                  <Button variant="outlined" sx={{border : "1px solid #A38FFD", color : "#A38FFD", width: "100px", height: "50px", fontSize: "18px"}}  onClick={handleCloseModal}>Cancel</Button>
-                  <Button variant="contained" sx={{backgroundColor : "#A38FFD", width: "100px", height: "50px", fontSize: "18px"}} onClick={() => {
+                  <Button variant="outlined" sx={{
+                    backgroundColor : "transparent",
+                    borderColor: "#6AB224",
+                    color: "#6AB224",
+                    width: "100px",
+                    height: "50px",
+                    fontSize: "18px",
+                    '&:hover': {
+                      backgroundColor: "#6AB224",
+                      color: "white",
+                      borderColor: "#6AB224",
+                    }
+                  }}
+                  onClick={handleCloseModal}>Cancel</Button>
+                  <Button variant="outlined" sx={{
+                    backgroundColor : "transparent",
+                    borderColor: "#6AB224",
+                    color: "#6AB224",
+                    width: "100px",
+                    height: "50px",
+                    fontSize: "18px",
+                    '&:hover': {
+                      backgroundColor: "#6AB224",
+                      color: "white",
+                      borderColor: "#6AB224",
+                    }
+                  }}
+                  onClick={() => {
                     handleCloseModal();
                     setPaymentStatus("Confirmation");
                     }}>OK</Button>
@@ -212,8 +316,8 @@ import {
           </Grid>
   
           <Grid item xs={12} md={4}>
-            <Box sx={{ display: 'flex', justifyContent: 'left' }}>
-              <img src={TrainingPayment} alt="Training Payment" style={{ width: "400px", height: "400px" }} />
+            <Box sx={{ display: 'flex', justifyContent: 'left', marginLeft: "-390px", marginTop: "-5px" }}>
+              <img src={TrainingPayment} alt="Training Payment" style={{ width: "1100px"}} />
             </Box>
           </Grid>
         </Grid>

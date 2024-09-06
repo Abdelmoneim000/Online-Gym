@@ -1,6 +1,6 @@
 import { Typography, Container, Box, Grid, Card, CardContent, Button } from "@mui/material";
 import CheckIcon from '@mui/icons-material/Check';
-import Box_Unlocked from '../assets/Box_Unlocked.svg';
+import Dumbbell from '../assets/Dumbbell.svg';
 import useOnScreen from "../Hooks/Observer";
 import { useRef, useState } from "react";
 
@@ -16,7 +16,7 @@ export default function Pricing() {
             localStorage.removeItem("selectedPrice");
         }
         localStorage.setItem("selectedPrice", number);
-        window.location.href = "https://online-gym-wine.vercel.app//payments";
+        window.location.href = "/payments";
     }
 
     
@@ -27,18 +27,24 @@ export default function Pricing() {
     ];
 
     return (
-        <Container ref={ref} sx={{fontFamily: "Rubik", animation: isVisible? 'fadeIn 2.5s forwards' : ''}}>
-                <Typography variant="h3" gutterBottom sx={{fontWeight: "500", textAlign: "center"}}>
+        <Container ref={ref}
+            maxWidth={false}
+            sx={{
+                fontFamily: "Rubik",
+                mt: 10,
+                background: 'linear-gradient(180deg, #000000 0%, #1E1E1E 51%, #1E1E1E 100%)',
+            }}>
+                <Typography variant="h3" gutterBottom sx={{fontWeight: "500", textAlign: "center", animation: isVisible? 'fadeIn 2.5s forwards' : '',}} color={"white"}>
                     Choose Your Plan
                 </Typography>
-            <Box textAlign="center" mb={4} display={"flex"} justifyContent={"center"}>
-                <Typography variant="subtitle1" color="textSecondary" sx={{fontSize: "20px", width: "40rem"}}>
+            <Box textAlign="center" mb={4} display={"flex"} justifyContent={"center"} sx={{animation: isVisible? 'fadeIn 2.5s forwards' : '',}}>
+                <Typography variant="subtitle1" color="textSecondary" sx={{fontSize: "20px", width: "40rem", color: "white"}}>
                     Let&apos;s choose the package that is best for you and explore it happily and cheerfully.
                 </Typography>
             </Box>
-            <Grid container spacing={1} justifyContent="center" marginTop={"5%"}>
+            <Grid container spacing={1} justifyContent="center" marginTop={"5%"} sx={{animation: isVisible? 'fadeIn 2.5s forwards' : '', marginLeft: "50px"}}>
                 {plans.map((plan, index) => (
-                    <Grid item xs={12} md={4} key={index} padding={10} sx={{borderWidth: "50px"}}>
+                    <Grid item xs={12} md={4} key={index} padding={5} sx={{borderWidth: "50px"}}>
                         <Card
                         className="pricing-card"
                             onMouseOver={() => {
@@ -48,14 +54,14 @@ export default function Pricing() {
                                 borderColor: card === index ? "#A38FFD" : "#DDDDDD",
                                 borderRadius: "10px",
                                 padding: "20px",
-                                width: "100%",
+                                width: "70%",
                             }}
                         >
                             <CardContent sx={{display: "flex", justifyContent: "space-between", flexDirection: "column", height: "650px"}}>
                                 <Box>
                                     <Box textAlign="center" mb={2}>
                                         {/* Placeholder for the image */}
-                                        <img src={Box_Unlocked} alt="openning box" />
+                                        <img src={Dumbbell} alt="Dumbbells" style={{marginBottom: "20px"}}/>
                                     </Box>
                                     <Typography variant="h6" marginBottom={"10%"} gutterBottom>
                                         {plan.title}
@@ -79,15 +85,16 @@ export default function Pricing() {
                                             marginTop: "3%",
                                             color: "black",
                                             borderRadius: "9px",
-                                            borderColor: "#30235B",
+                                            borderWidth: "2px",
+                                            borderColor: "black",
                                             fontWeight: "600",
                                             fontSize: "20px",
                                             textTransform: "none",
                                             width: "150px",
                                             "&:hover": {
-                                                backgroundColor: "#A38FFD",
-                                                color: "#fff",
-                                                borderColor: "#A38FFD",
+                                                backgroundColor: "#78BF34",
+                                                color: "white",
+                                                borderColor: "transparent",
                                             },
                                         }}
                                         onClick={() => handlePrice(plan.selected)}

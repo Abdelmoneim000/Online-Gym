@@ -4,8 +4,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
 import PropTypes from 'prop-types';
 
 const pages = ['Home', 'Courses', 'About Us', 'Pricing', 'Contact'];
@@ -14,118 +12,106 @@ function ResponsiveAppBar({ onScrollToPricing, onScrollToFooter }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   return (
-    <AppBar 
-      position="fixed" 
-      sx={{ 
-        backgroundColor: '#F6F4FF', 
-        boxShadow: 'none', 
-        width: "100%", 
-        padding: 0 
-      }}
-    >
-      <Toolbar 
-        disableGutters 
+<AppBar 
+  position="fixed" 
+  sx={{ 
+    backgroundColor: 'transparent', 
+    boxShadow: 'none', 
+    width: "100%", 
+    padding: 0,
+  }}
+>
+  <Toolbar 
+    disableGutters 
+    sx={{ 
+      width: '100%', 
+      padding: '0 16px',
+      boxSizing: 'border-box',
+      display: 'flex',
+      justifyContent: 'space-around', // Ensure the nav items are spaced between
+      alignItems: 'center' // Center the content vertically
+    }}
+  >
+    {/* Left: Menu items */}
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+      {pages.map((page, index) => (
+        <Button
+          key={index}
+          className='nav-link'
+          onMouseOver={() => {
+            setAnchorElNav(index);
+          }}
+          onClick={() => {
+            if (page === 'Pricing') {
+              onScrollToPricing();
+            } else if (page === 'Contact') {
+              onScrollToFooter();
+            } else if (index === 0) {
+              window.location.href = '/';
+            }
+          }}
+          sx={{
+            textTransform: 'none',
+            color: 'white',
+            fontSize: '16px',
+            fontWeight: '500',
+            padding: '12px 24px', // Adjust padding for larger buttons
+          }}
+        >
+          {page}
+        </Button>
+      ))}
+    </Box>
+
+    {/* Right: Search, AR/EN, Login, and Sign Up */}
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+      
+
+      <Typography 
         sx={{ 
-          width: '100%', 
-          padding: '0 16px',
-          boxSizing: 'border-box',
-          display: 'flex',
-          justifyContent: 'center'
+          fontWeight: 'bold', 
+          color: 'white', 
         }}
       >
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {pages.map((page, index) => (
-            <Button
-              key={index}
-              onMouseOver={() => {
-                setAnchorElNav(index);
-              }}
-              onClick={() => {
-                if (page === 'Pricing') {
-                  onScrollToPricing();
-                } else if (page === 'Contact') {
-                  onScrollToFooter();
-                } else if (index === 0) {
-                  window.location.href = '/';
-                }
-              }}
-              sx={{
-                textTransform: 'none',
-                color: '#000',
-                margin: '0 10px',
-                fontSize: '18px',
-                fontWeight: '400',
-                minHeight: '55px',
-                minWidth: '100px',
-                ...(index === anchorElNav && {
-                  backgroundColor: '#E6E6F6',
-                  borderRadius: '8px',
-                }),
-              }}
-            >
-              {page}
-            </Button>
-          ))}
-        </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#fff',
-              borderRadius: '8px',
-              padding: '6px 12px',
-              marginRight: '16px', // Adjust margin between elements
-            }}
-          >
-            <SearchIcon sx={{ color: '#000' }} />
-            <InputBase 
-              className='inputField' 
-              placeholder="Search" 
-              sx={{ marginLeft: '8px', color: '#000', justifyContent: 'center' }} 
-            />
-          </Box>
+        AR/EN
+      </Typography>
 
-          <Typography 
-            sx={{ 
-              fontWeight: 'bold', 
-              color: '#000', 
-              marginRight: '16px' // Adjust margin
-            }}
-          >
-            AR/EN
-          </Typography>
+      <Button
+        onClick={() => { window.location.href = '/login'; }}
+        sx={{
+          textTransform: 'none',
+          color: 'white',
+          borderRadius: '8px',
+          padding: '6px 24px',
+          "&:hover": {
+            backgroundColor: 'white',
+            color: 'black'
+          }
+        }}
+      >
+        Login
+      </Button>
 
-          <Button
-            onClick={() => { window.location.href = '/login'; }}
-            sx={{
-              textTransform: 'none',
-              color: '#fff',
-              backgroundColor: '#8F84FF',
-              borderRadius: '8px',
-              padding: '6px 16px',
-              marginRight: '8px',
-            }}
-          >
-            Login
-          </Button>
+      <Button
+        sx={{
+          textTransform: 'none',
+          color: 'white',
+          backgroundColor: 'transparent',
+          borderRadius: '8px',
+          padding: '6px 24px',
+          "&:hover": {
+            backgroundColor: 'white',
+            color: 'black'
+          }
+        }}
+        onClick={() => { window.location.href = '/signup'; }}
+      >
+        Sign Up
+      </Button>
+    </Box>
+  </Toolbar>
+</AppBar>
 
-          <Button
-            sx={{
-              textTransform: 'none',
-              color: '#5553FF',
-              backgroundColor: '#E6E4FF',
-              borderRadius: '8px',
-              padding: '6px 16px',
-            }}
-            onClick={() => { window.location.href = '/signup'; }}
-          >
-            Sign Up
-          </Button>
-        </Box>
-      </Toolbar>
-    </AppBar>
   );
 }
 
