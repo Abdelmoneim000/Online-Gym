@@ -15,7 +15,7 @@ import {
   import PayPalIcon from '../assets/paypal.svg';
   import WalletIcon from '../assets/stc_pay.svg';
   import { useState } from 'react';
-  import TrainingPayment from '../assets/Training_payment.png';
+  import TrainingPayment from '../assets/training_payment.png';
 
   const Payment = () => {
     const [paymentMethod, setPaymentMethod] = useState('card');
@@ -233,6 +233,9 @@ import {
                     color: "white",
                     borderColor: "#85E22B",
                   }
+                }}
+                onClick={() => {
+                  window.history.back();
                 }}
                 >
                   Back
