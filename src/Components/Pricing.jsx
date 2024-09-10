@@ -10,7 +10,8 @@ export default function Pricing() {
     const isVisible = useOnScreen(ref);
 
     const [card, setCard] = useState(null);
-
+    const url = "https://docs.google.com/forms/d/e/1FAIpQLScaynm36IAvhhSb46jH2Fuh0sdaU7kk29HiYiJtGe7cKLZh1Q/viewform?usp=sf_link"
+    /*
     function handlePrice(number) {
         if(localStorage.getItem("selectedPrice")) {
             localStorage.removeItem("selectedPrice");
@@ -18,6 +19,7 @@ export default function Pricing() {
         localStorage.setItem("selectedPrice", number);
         window.location.href = "/payments";
     }
+    */
 
     
     const plans = [
@@ -97,7 +99,7 @@ export default function Pricing() {
                                                 borderColor: "transparent",
                                             },
                                         }}
-                                        onClick={() => handlePrice(plan.selected)}
+                                        onClick={() => window.open(url, "_blank")}
                                     >
                                         Select
                                     </Button>

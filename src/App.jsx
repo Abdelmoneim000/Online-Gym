@@ -4,6 +4,7 @@ import Landing from './pages/landing';
 import LogInPage from './pages/LogIn';
 import Payment from './pages/Payment';
 import './App.css';
+import Courses from './pages/Courses';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path='/login' element={<LogInPage />}/>
         <Route path='/payments' element={<Payment />} />
+        <Route path='/courses' element={<Courses />}/>
       </Routes>
     </Router>
   );

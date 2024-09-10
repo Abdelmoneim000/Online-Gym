@@ -69,7 +69,17 @@ body {
     left: 0;
   }
 }
+@keyframes hoverCard {
+  from {
+    border-width: 0px;
+  }
 
+  to {
+    border-width: 2px;
+    border-color: #3dbf4d;
+  }
+  
+}
 .nav-link {
   position: relative;
   text-decoration: none;

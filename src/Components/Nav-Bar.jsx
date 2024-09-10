@@ -48,6 +48,8 @@ function ResponsiveAppBar({ onScrollToPricing, onScrollToFooter }) {
               onScrollToFooter();
             } else if (index === 0) {
               window.location.href = '/';
+            } else if (page === 'Courses') {
+              window.location.href = '/courses';
             }
           }}
           sx={{
