@@ -9,7 +9,7 @@ import {
   Box,
 } from "@mui/material";
 import ResponsiveAppBar from "../Components/Nav-Bar";
-import ProductManagement from "../assets/product_management.svg";
+import ProductManagement from "../assets/Product_management.svg";
 import BMDataSience from "../assets/BMDataScience.svg";
 import Python from "../assets/Python.svg";
 import WellBeing from "../assets/WellBeing.svg";
